@@ -8,4 +8,6 @@ public class Constants {
     public static final Long CONNECT_TIME_OUT = 20000L;
     public static final Long READ_TIME_OUT = 20000L;
     public static final String POW_DABOX_BASE_URL = "http://powdabox.com/api/";
+    public static final String MY_BOX = "my_box";
+    public static final String MY_TOKEN = "my_token";
 }

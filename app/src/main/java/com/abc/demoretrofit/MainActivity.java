@@ -1,6 +1,7 @@
 package com.abc.demoretrofit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), response.body().getData().getToken(),
                         Toast.LENGTH_SHORT).show();
                 mTvToken.setText(response.body().getData().getToken());
+                saveData(response.body().getData().getToken());
                 startMainActivity();
             }
 
@@ -67,5 +69,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void startMainActivity() {
         startActivity(new Intent(this, Main2Activity.class));
+    }
+
+    private void saveData(String token) {
+        SharedPreferences.Editor editor =
+                getSharedPreferences(Constants.MY_BOX, MODE_PRIVATE).edit();
+        editor.putString(Constants.MY_TOKEN, token);
+        editor.apply();
     }
 }
